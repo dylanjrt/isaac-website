@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Arizonia, Georama } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
+import Navbar from "./components/navbar";
 
 const arizonia = Arizonia({
   variable: "--font-arizonia",
@@ -27,22 +27,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${georama.className} antialiased text-primary`}>
-        <nav className="bg-background h-full text-primary p-8">
-          <div className="flex items-center justify-between">
-            <div
-              className={`flex items-center pr-12 font-arizonia text-4xl whitespace-nowrap ${arizonia.className}`}
-            >
-              <Link href="/">ISAAC TEA</Link>
-            </div>
-            <div className="flex justify-end items-center gap-16 font-medium text-lg">
-              <Link href="/">Home</Link>
-              <Link href="/collaborations">Collaborations</Link>
-              <Link href="/music">Music</Link>
-              <Link href="/contact">Contact</Link>
-            </div>
-          </div>
-        </nav>
+      <body className={`${georama.className} text-primary antialiased`}>
+        <Navbar arizoniaClass={arizonia.className} />
         {children}
       </body>
     </html>
