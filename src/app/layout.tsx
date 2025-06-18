@@ -1,13 +1,7 @@
 import type { Metadata } from "next";
-import { Arizonia, Georama } from "next/font/google";
+import { Georama } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
-
-const arizonia = Arizonia({
-  variable: "--font-arizonia",
-  subsets: ["latin"],
-  weight: "400",
-});
 
 const georama = Georama({
   variable: "--font-georama",
@@ -28,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${georama.className} text-primary antialiased`}>
-        <Navbar arizoniaClass={arizonia.className} />
+        <Navbar />
         {children}
       </body>
     </html>
