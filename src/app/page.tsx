@@ -44,7 +44,7 @@ function renderBlock(block: PageBlock, idx: number) {
   switch (block._type) {
     case "imageBlock":
       return (
-        <div className="mx-auto my-8 w-full px-8" key={idx}>
+        <div className="mx-auto my-8 w-full px-24" key={idx}>
           {block.image && (
             <Image
               src={urlFor(block.image).url()}
@@ -58,7 +58,7 @@ function renderBlock(block: PageBlock, idx: number) {
       );
     case "videoBlock":
       return (
-        <div className="mx-auto my-8 w-full px-8" key={idx}>
+        <div className="mx-auto my-8 w-full px-24" key={idx}>
           {block.url && (
             <div className="relative w-full pt-[56.25%]">
               {" "}
@@ -75,7 +75,7 @@ function renderBlock(block: PageBlock, idx: number) {
       );
     case "textBlock":
       return (
-        <div className="mx-auto my-8 px-8" key={idx}>
+        <div className="mx-auto mb-8 px-24" key={idx}>
           <p className="text-lg text-[#e0d6c3]">{block.text}</p>
         </div>
       );
