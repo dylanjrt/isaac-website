@@ -24,21 +24,21 @@ function renderBlock(block: PageBlock, idx: number) {
   switch (block._type) {
     case "imageBlock":
       return (
-        <div className="mx-auto my-8 w-full max-w-4xl" key={idx}>
+        <div className="mx-auto my-8 w-full" key={idx}>
           {block.image && (
             <Image
               src={urlFor(block.image).url()}
               alt={block.alt || ""}
               width={1200}
               height={600}
-              className="h-auto w-full rounded-lg object-cover"
+              className="h-auto w-full object-cover"
             />
           )}
         </div>
       );
     case "videoBlock":
       return (
-        <div className="mx-auto my-8 w-full max-w-4xl" key={idx}>
+        <div className="mx-auto my-8 w-full" key={idx}>
           {block.url && (
             <div className="relative w-full pt-[56.25%]">
               {" "}
@@ -46,7 +46,7 @@ function renderBlock(block: PageBlock, idx: number) {
               <iframe
                 src={block.url.replace("watch?v=", "embed/")}
                 title={block.caption || "Video"}
-                className="absolute top-0 left-0 h-full w-full rounded-lg"
+                className="absolute top-0 left-0 h-full w-full"
                 allowFullScreen
               />
             </div>
@@ -60,7 +60,7 @@ function renderBlock(block: PageBlock, idx: number) {
       );
     case "textBlock":
       return (
-        <div className="mx-auto my-8 max-w-4xl px-4" key={idx}>
+        <div className="mx-auto my-8 px-4" key={idx}>
           <p className="text-lg text-[#e0d6c3]">{block.text}</p>
         </div>
       );
