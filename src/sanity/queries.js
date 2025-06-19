@@ -24,10 +24,35 @@ export const allContactItemsQuery = groq`
   }
 `;
 
+export const contactPageQuery = groq`
+  *[_type == "contactPage"][0]{
+    image
+  }
+`;
+
+export const homePageQuery = groq`
+  *[_type == "homePage"][0]{
+    content[] {
+      ...,
+      image{
+        asset->
+      }
+    }
+  }
+`;
+
 export async function getCollaborations() {
   return await client.fetch(allCollaborationsQuery);
 }
 
 export async function getContactItems() {
   return await client.fetch(allContactItemsQuery);
+}
+
+export async function getContactPage() {
+  return await client.fetch(contactPageQuery);
+}
+
+export async function getHomePage() {
+  return await client.fetch(homePageQuery);
 }
