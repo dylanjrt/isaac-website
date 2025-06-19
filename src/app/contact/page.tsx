@@ -11,7 +11,7 @@ export default async function Contact() {
   ]);
 
   return (
-    <div className="flex w-full justify-center gap-16 p-24">
+    <div className="flex w-full justify-start gap-16 p-8 px-24 text-lg">
       <div className="flex flex-col gap-6">
         {contactItems.map((item: ContactItem) => (
           <div className="flex flex-col gap-2" key={item._id}>
