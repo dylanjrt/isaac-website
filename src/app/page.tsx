@@ -20,11 +20,31 @@ interface TextBlock {
 }
 type PageBlock = ImageBlock | VideoBlock | TextBlock;
 
+function getYouTubeEmbedUrl(url: string): string {
+  try {
+    const ytMatch = url.match(
+      /(?:youtube\.com\/watch\?v=|youtu\.be\/)([\w-]+)/,
+    );
+    if (!ytMatch) return url;
+    const videoId = ytMatch[1];
+    // Extract start time (t=2635s or t=2635)
+    const tMatch = url.match(/[?&]t=(\d+)(s)?/);
+    const start = tMatch ? tMatch[1] : null;
+    let embedUrl = `https://www.youtube.com/embed/${videoId}`;
+    if (start) {
+      embedUrl += `?start=${start}`;
+    }
+    return embedUrl;
+  } catch {
+    return url;
+  }
+}
+
 function renderBlock(block: PageBlock, idx: number) {
   switch (block._type) {
     case "imageBlock":
       return (
-        <div className="mx-auto my-8 w-full" key={idx}>
+        <div className="mx-auto my-8 w-full px-8" key={idx}>
           {block.image && (
             <Image
               src={urlFor(block.image).url()}
@@ -38,13 +58,13 @@ function renderBlock(block: PageBlock, idx: number) {
       );
     case "videoBlock":
       return (
-        <div className="mx-auto my-8 w-full" key={idx}>
+        <div className="mx-auto my-8 w-full px-8" key={idx}>
           {block.url && (
             <div className="relative w-full pt-[56.25%]">
               {" "}
               {/* 16:9 Aspect Ratio */}
               <iframe
-                src={block.url.replace("watch?v=", "embed/")}
+                src={getYouTubeEmbedUrl(block.url)}
                 title={block.caption || "Video"}
                 className="absolute top-0 left-0 h-full w-full"
                 allowFullScreen
@@ -60,7 +80,7 @@ function renderBlock(block: PageBlock, idx: number) {
       );
     case "textBlock":
       return (
-        <div className="mx-auto my-8 px-4" key={idx}>
+        <div className="mx-auto my-8 px-8" key={idx}>
           <p className="text-lg text-[#e0d6c3]">{block.text}</p>
         </div>
       );
