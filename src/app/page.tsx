@@ -71,11 +71,6 @@ function renderBlock(block: PageBlock, idx: number) {
               />
             </div>
           )}
-          {block.caption && (
-            <p className="mt-2 text-center text-sm text-gray-400">
-              {block.caption}
-            </p>
-          )}
         </div>
       );
     case "textBlock":
