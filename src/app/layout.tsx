@@ -21,10 +21,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${georama.className} text-primary antialiased`}>
+      <body
+        className={`${georama.className} text-primary flex min-h-screen flex-col antialiased`}
+      >
         <Navbar />
-        {children}
-        <footer className="flex w-full items-center justify-end pr-24 pb-8 text-lg">
+        <main className="flex flex-1 flex-col">{children}</main>
+        <footer className="bg-background mt-auto flex w-full items-center justify-end pr-24 pb-8 text-lg">
           <span>
             site by:{" "}
             <a

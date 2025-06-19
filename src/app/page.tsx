@@ -88,7 +88,7 @@ export default async function Home() {
   const homePage = await getHomePage();
 
   return (
-    <div className="flex min-h-screen flex-col items-center bg-[#2d241b] text-[#fff]">
+    <div className="flex min-h-screen flex-col items-center">
       {homePage?.content?.map((block: PageBlock, idx: number) =>
         renderBlock(block, idx),
       )}
