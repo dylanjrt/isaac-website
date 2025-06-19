@@ -12,7 +12,7 @@ export const allCollaborationsQuery = groq`
     releaseDate,
     artistName,
     contributions
-  }
+  } | order(releaseDate desc)
 `;
 
 export const allContactItemsQuery = groq`
