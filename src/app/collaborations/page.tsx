@@ -7,7 +7,7 @@ export default async function CollaborationsPage() {
   const collaborations: Collaborations[] = await getCollaborations();
 
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center p-8">
+    <div className="flex min-h-screen flex-col items-center justify-center p-8 px-24">
       <div className="grid w-full grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {collaborations && collaborations.length > 0 ? (
           collaborations.map((collab) => (

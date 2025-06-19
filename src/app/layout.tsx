@@ -24,6 +24,19 @@ export default function RootLayout({
       <body className={`${georama.className} text-primary antialiased`}>
         <Navbar />
         {children}
+        <footer className="flex w-full items-center justify-end pr-24 pb-8 text-lg">
+          <span>
+            site by:{" "}
+            <a
+              href="https://dylanrt.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline"
+            >
+              Dylan RT
+            </a>
+          </span>
+        </footer>
       </body>
     </html>
   );
