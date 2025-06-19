@@ -21,7 +21,7 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <nav className="bg-background text-primary h-full p-8">
+    <nav className="bg-background text-primary h-full p-8 px-24">
       <div className="flex items-center justify-between">
         <div
           className={`flex items-center pr-12 text-4xl whitespace-nowrap ${arizonia.className}`}
