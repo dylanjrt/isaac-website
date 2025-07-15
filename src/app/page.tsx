@@ -2,6 +2,7 @@ import { getHomePage } from "@/sanity/queries";
 import { urlFor } from "@/sanity/lib/urlFor";
 import Image from "next/image";
 import type { SanityImageSource } from "@sanity/image-url/lib/types/types";
+export const revalidate = 300;
 
 // Define types for the blocks
 interface ImageBlock {

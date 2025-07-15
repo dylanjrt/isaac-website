@@ -3,6 +3,7 @@ import { ContactItem } from "@/types/sanity.types";
 import Link from "next/link";
 import Image from "next/image";
 import { urlFor } from "@/sanity/lib/urlFor";
+export const revalidate = 300;
 
 export default async function Contact() {
   const [contactItems, contactPage] = await Promise.all([

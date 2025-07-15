@@ -1,3 +1,5 @@
+export const revalidate = 300;
+
 export default function Music() {
   return (
     <div className="flex h-screen flex-col items-center justify-center">

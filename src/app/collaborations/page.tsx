@@ -2,6 +2,7 @@ import { getCollaborations } from "@/sanity/queries";
 import type { Collaborations } from "@/types/sanity.types";
 import { urlFor } from "@/sanity/lib/urlFor";
 import Image from "next/image";
+export const revalidate = 300;
 
 export default async function CollaborationsPage() {
   const collaborations: Collaborations[] = await getCollaborations();
