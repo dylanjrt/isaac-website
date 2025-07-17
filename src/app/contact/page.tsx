@@ -12,33 +12,34 @@ export default async function Contact() {
   ]);
 
   return (
-    <div className="flex w-full justify-start gap-16 p-8 px-24 text-lg">
-      <div className="flex flex-col gap-6">
+    <div className="flex w-full flex-col justify-start gap-8 p-4 text-base sm:p-6 sm:text-lg md:p-8 lg:flex-row lg:gap-16 lg:px-24">
+      <div className="flex flex-col gap-4 sm:gap-6">
         {contactItems.map((item: ContactItem) => (
-          <div className="flex flex-col gap-2" key={item._id}>
-            <span className="font-bold">{item.name}:</span>{" "}
+          <div className="flex flex-col gap-1 sm:gap-2" key={item._id}>
+            <span className="text-sm font-bold sm:text-base">{item.name}:</span>{" "}
             {item.link ? (
               <Link
                 href={item.link}
-                className="underline"
+                className="text-sm break-all underline sm:text-base"
                 target="_blank"
                 rel="noopener noreferrer"
               >
                 {item.displayedAs || item.link}
               </Link>
             ) : (
-              <span>{item.displayedAs}</span>
+              <span className="text-sm sm:text-base">{item.displayedAs}</span>
             )}
           </div>
         ))}
       </div>
       {contactPage?.image && (
-        <div className="mb-8">
+        <div className="mt-6 lg:mt-0 lg:mb-8">
           <Image
             src={urlFor(contactPage.image).url()}
             alt="Contact page image"
             width={600}
             height={400}
+            className="h-auto w-full max-w-full rounded-lg"
           />
         </div>
       )}
