@@ -45,23 +45,29 @@ function renderBlock(block: PageBlock, idx: number) {
   switch (block._type) {
     case "imageBlock":
       return (
-        <div className="mx-auto my-8 w-full px-24" key={idx}>
+        <div
+          className="mx-auto my-4 w-full px-4 sm:my-6 sm:px-8 md:my-8 md:px-16 lg:px-24"
+          key={idx}
+        >
           {block.image && (
             <Image
               src={urlFor(block.image).url()}
               alt={block.alt || ""}
               width={1200}
               height={600}
-              className="h-auto w-full object-cover"
+              className="h-auto w-full rounded-lg object-cover"
             />
           )}
         </div>
       );
     case "videoBlock":
       return (
-        <div className="mx-auto my-8 w-full px-24" key={idx}>
+        <div
+          className="mx-auto my-4 w-full px-4 sm:my-6 sm:px-8 md:my-8 md:px-16 lg:px-24"
+          key={idx}
+        >
           {block.url && (
-            <div className="relative w-full pt-[56.25%]">
+            <div className="relative w-full overflow-hidden rounded-lg pt-[56.25%]">
               {" "}
               {/* 16:9 Aspect Ratio */}
               <iframe
@@ -76,8 +82,13 @@ function renderBlock(block: PageBlock, idx: number) {
       );
     case "textBlock":
       return (
-        <div className="mx-auto mb-8 px-24" key={idx}>
-          <p className="text-lg text-[#e0d6c3]">{block.text}</p>
+        <div
+          className="mx-auto mb-4 px-4 sm:mb-6 sm:px-8 md:mb-8 md:px-16 lg:px-24"
+          key={idx}
+        >
+          <p className="text-base leading-relaxed text-[#e0d6c3] sm:text-lg">
+            {block.text}
+          </p>
         </div>
       );
     default:
