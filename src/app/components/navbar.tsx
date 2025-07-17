@@ -33,7 +33,7 @@ export default function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className={` ${pathname === link.href ? "text-accent" : ""}`}
+              className={`hover:text-secondary ${pathname === link.href ? "text-accent" : ""}`}
             >
               {link.label}
             </Link>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Georama } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/navbar";
+import Footer from "./components/footer";
 
 const georama = Georama({
   variable: "--font-georama",
@@ -26,19 +27,7 @@ export default function RootLayout({
       >
         <Navbar />
         <main className="flex flex-1 flex-col">{children}</main>
-        <footer className="bg-background mt-auto flex w-full items-center justify-end pr-24 pb-8 text-lg">
-          <span>
-            site by:{" "}
-            <a
-              href="https://dylanrt.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline"
-            >
-              Dylan RT
-            </a>
-          </span>
-        </footer>
+        <Footer />
       </body>
     </html>
   );

@@ -4,12 +4,14 @@
   --background: #302014;
   --text-accent: #89d159;
   --text-primary: #dddddd;
+  --text-secondary: #a8a5a5;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-accent: var(--text-accent);
   --color-primary: var(--text-primary);
+  --color-secondary: var(--text-secondary);
   --font-sans: var(--font-georama);
   --font-mono: var(--font-georama);
 }
