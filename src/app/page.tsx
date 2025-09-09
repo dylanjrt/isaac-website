@@ -105,93 +105,90 @@ function renderBlock(block: PageBlock, idx: number) {
       if (block.music) {
         return (
           <div
-            className="w-fullpx-4 mx-auto py-12 sm:px-8 md:px-16 lg:px-24"
+            className="mx-auto my-4 w-full px-4 sm:my-6 sm:px-8 md:my-8 md:px-16 lg:px-24"
             key={idx}
           >
             <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
-              {/* Right Column - Music Player & Info */}
-              <div className="lg:order-2 lg:w-max">
-                <div className="">
-                  {/* Title Text */}
-                  <div className="mb-6 flex">
-                    <div className="flex w-full items-center justify-between">
-                      <h2 className="text-2xl font-bold text-white lg:text-3xl">
-                        {`${block.music.albumName || "Untitled Album"}`}
-                      </h2>
-                      <h3 className="text-primary mr-4 text-2xl italic lg:text-3xl">
-                        OUT NOW!
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Bandcamp Player */}
-                  {block.music.bandcampEmbed && (
-                    <div className="mb-6 w-full overflow-hidden rounded-lg">
-                      <div
-                        className="w-full"
-                        dangerouslySetInnerHTML={{
-                          __html: block.music.bandcampEmbed,
-                        }}
-                      />
-                    </div>
-                  )}
-
-                  {/* Streaming Links */}
-                  <div className="flex flex-wrap gap-6 text-base">
-                    {block.music.bandcampLink && (
-                      <Link
-                        href={block.music.bandcampLink}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:bg-accent bg-background cursor-pointer rounded-lg border-2 border-white px-2 text-lg font-medium text-white transition-colors hover:text-white"
-                      >
-                        Bandcamp
-                      </Link>
-                    )}
-                    {block.music.appleMusicUrl && (
-                      <Link
-                        href={block.music.appleMusicUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:bg-accent bg-background cursor-pointer rounded-lg border-2 border-white px-2 text-lg font-medium text-white transition-colors hover:text-white"
-                      >
-                        Apple Music
-                      </Link>
-                    )}
-                    {block.music.spotifyUrl && (
-                      <Link
-                        href={block.music.spotifyUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="hover:bg-accent bg-background cursor-pointer rounded-lg border-2 border-white px-2 text-lg font-medium text-white transition-colors hover:text-white"
-                      >
-                        Spotify
-                      </Link>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Left Column - Album Art */}
+              {/* Album Art (Top on mobile, left on desktop) */}
               <div className="flex justify-center lg:order-1 lg:flex-shrink-0">
                 {block.music.albumCover && block.music.albumCover.asset ? (
                   <div className="group relative">
-                    {/* Main image container */}
-                    <div className="">
+                    <div>
                       <Image
                         src={urlFor(block.music.albumCover).url()}
                         alt={block.music.albumName || "Album Cover"}
-                        className="h-64 w-auto rounded-lg object-cover transition-all duration-300 lg:h-[550px]"
+                        className="h-48 w-48 rounded-lg object-cover shadow-lg sm:h-64 sm:w-64 lg:h-[400px] lg:w-[400px]"
                         width={400}
-                        height={500}
+                        height={400}
                       />
                     </div>
                   </div>
                 ) : (
-                  <div className="flex h-64 w-64 items-center justify-center border border-gray-300 bg-gray-100 shadow-lg lg:h-[500px] lg:w-[400px]">
+                  <div className="flex h-48 w-48 items-center justify-center border border-gray-300 bg-gray-100 shadow-lg sm:h-64 sm:w-64 lg:h-[400px] lg:w-[400px]">
                     <span className="text-gray-500">Album Art</span>
                   </div>
                 )}
+              </div>
+
+              {/* Music Info & Player */}
+              <div className="flex flex-1 flex-col justify-center lg:order-2">
+                {/* Title Text */}
+                <div className="mb-4 flex flex-col gap-2 sm:mb-6">
+                  <h2 className="text-center text-2xl font-bold text-white sm:text-3xl lg:text-left">
+                    {block.music.albumName || "Untitled Album"}
+                  </h2>
+                  <div className="flex items-center justify-center gap-2 lg:justify-start">
+                    <h3 className="text-primary text-xl italic sm:text-2xl lg:text-2xl">
+                      OUT NOW!
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Bandcamp Player */}
+                {block.music.bandcampEmbed && (
+                  <div className="mb-4 w-full overflow-hidden rounded-lg sm:mb-6">
+                    <div
+                      className="w-full"
+                      dangerouslySetInnerHTML={{
+                        __html: block.music.bandcampEmbed,
+                      }}
+                    />
+                  </div>
+                )}
+
+                {/* Streaming Links */}
+                <div className="flex flex-wrap justify-center gap-4 text-base sm:gap-6 lg:justify-start">
+                  {block.music.bandcampLink && (
+                    <Link
+                      href={block.music.bandcampLink}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:bg-accent bg-background cursor-pointer rounded-lg border-2 border-white px-2 text-lg font-medium text-white transition-colors hover:text-white"
+                    >
+                      Bandcamp
+                    </Link>
+                  )}
+                  {block.music.appleMusicUrl && (
+                    <Link
+                      href={block.music.appleMusicUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:bg-accent bg-background cursor-pointer rounded-lg border-2 border-white px-2 text-lg font-medium text-white transition-colors hover:text-white"
+                    >
+                      Apple Music
+                    </Link>
+                  )}
+                  {block.music.spotifyUrl && (
+                    <Link
+                      href={block.music.spotifyUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="hover:bg-accent bg-background cursor-pointer rounded-lg border-2 border-white px-2 text-lg font-medium text-white transition-colors hover:text-white"
+                    >
+                      Spotify
+                    </Link>
+                  )}
+                </div>
               </div>
             </div>
           </div>
