@@ -50,11 +50,26 @@ export type Music = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  musicTitle?: string;
-  artistTitle?: string;
-  date?: string;
+  albumCover?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  albumName?: string;
+  songs?: Array<string>;
+  releaseDate?: string;
+  artistName?: string;
+  bandcampEmbed?: string;
   bandcampLink?: string;
-  description?: string;
+  appleMusicUrl?: string;
+  spotifyUrl?: string;
 };
 
 export type Collaborations = {
