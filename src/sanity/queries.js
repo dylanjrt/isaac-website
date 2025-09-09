@@ -1,7 +1,22 @@
 import { groq } from "next-sanity";
 import { client } from "./lib/client";
 
-export const allMusicQuery = groq`*[_type == "music"]`;
+export const allMusicQuery = groq`
+  *[_type == "music"]{
+    _id,
+    albumCover{
+      asset->
+    },
+    albumName,
+    songs,
+    releaseDate,
+    artistName,
+    bandcampEmbed,
+    bandcampLink,
+    appleMusicUrl,
+    spotifyUrl
+  } | order(releaseDate desc)
+`;
 
 export const allCollaborationsQuery = groq`
   *[_type == "collaborations"]{
@@ -36,7 +51,24 @@ export const homePageQuery = groq`
       ...,
       image{
         asset->
-      }
+      },
+      ...select(_type == "reference" => {
+        ...,
+        "music": *[_id == ^._ref][0]{
+          _id,
+          albumCover{
+            asset->
+          },
+          albumName,
+          songs,
+          releaseDate,
+          artistName,
+          bandcampEmbed,
+          bandcampLink,
+          appleMusicUrl,
+          spotifyUrl
+        }
+      })
     }
   }
 `;
@@ -55,4 +87,8 @@ export async function getContactPage() {
 
 export async function getHomePage() {
   return await client.fetch(homePageQuery);
+}
+
+export async function getMusic() {
+  return await client.fetch(allMusicQuery);
 }
