@@ -110,21 +110,23 @@ function renderBlock(block: PageBlock, idx: number) {
           >
             <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
               {/* Right Column - Music Player & Info */}
-              <div className="lg:order-2 lg:w-[800px]">
+              <div className="lg:order-2 lg:w-max">
                 <div className="">
                   {/* Title Text */}
                   <div className="mb-6 flex">
-                    <h2 className="mr-4 text-2xl font-bold text-white lg:text-3xl">
-                      {`${block.music.albumName || "Untitled Album"}`}
-                    </h2>
-                    <h3 className="text-primary text-2xl lg:text-3xl">
-                      NEW EP OUT NOW!
-                    </h3>
+                    <div className="flex w-full items-center justify-between">
+                      <h2 className="text-2xl font-bold text-white lg:text-3xl">
+                        {`${block.music.albumName || "Untitled Album"}`}
+                      </h2>
+                      <h3 className="text-primary mr-4 text-2xl italic lg:text-3xl">
+                        OUT NOW!
+                      </h3>
+                    </div>
                   </div>
 
                   {/* Bandcamp Player */}
                   {block.music.bandcampEmbed && (
-                    <div className="mb-6 w-full overflow-hidden">
+                    <div className="mb-6 w-full overflow-hidden rounded-lg">
                       <div
                         className="w-full"
                         dangerouslySetInnerHTML={{
@@ -141,7 +143,7 @@ function renderBlock(block: PageBlock, idx: number) {
                         href={block.music.bandcampLink}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:bg-accent bg-background cursor-pointer border-2 border-white px-2 text-lg font-medium text-white transition-colors hover:text-white"
+                        className="hover:bg-accent bg-background cursor-pointer rounded-lg border-2 border-white px-2 text-lg font-medium text-white transition-colors hover:text-white"
                       >
                         Bandcamp
                       </Link>
@@ -151,7 +153,7 @@ function renderBlock(block: PageBlock, idx: number) {
                         href={block.music.appleMusicUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:bg-accent bg-background cursor-pointer border-2 border-white px-2 text-lg font-medium text-white transition-colors hover:text-white"
+                        className="hover:bg-accent bg-background cursor-pointer rounded-lg border-2 border-white px-2 text-lg font-medium text-white transition-colors hover:text-white"
                       >
                         Apple Music
                       </Link>
@@ -161,7 +163,7 @@ function renderBlock(block: PageBlock, idx: number) {
                         href={block.music.spotifyUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="hover:bg-accent bg-background cursor-pointer border-2 border-white px-2 text-lg font-medium text-white transition-colors hover:text-white"
+                        className="hover:bg-accent bg-background cursor-pointer rounded-lg border-2 border-white px-2 text-lg font-medium text-white transition-colors hover:text-white"
                       >
                         Spotify
                       </Link>
@@ -179,7 +181,7 @@ function renderBlock(block: PageBlock, idx: number) {
                       <Image
                         src={urlFor(block.music.albumCover).url()}
                         alt={block.music.albumName || "Album Cover"}
-                        className="h-64 w-auto object-cover transition-all duration-300 lg:h-[500px]"
+                        className="h-64 w-auto rounded-lg object-cover transition-all duration-300 lg:h-[550px]"
                         width={400}
                         height={500}
                       />
