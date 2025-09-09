@@ -108,7 +108,7 @@ function renderBlock(block: PageBlock, idx: number) {
             className="mx-auto my-4 w-full px-4 sm:my-6 sm:px-8 md:my-8 md:px-16 lg:px-24"
             key={idx}
           >
-            <div className="flex flex-col gap-8 lg:flex-row lg:items-start">
+            <div className="flex flex-col justify-center gap-8 lg:flex-row lg:items-start">
               {/* Album Art (Top on mobile, left on desktop) */}
               <div className="flex justify-center lg:order-1 lg:flex-shrink-0">
                 {block.music.albumCover && block.music.albumCover.asset ? (
@@ -131,14 +131,14 @@ function renderBlock(block: PageBlock, idx: number) {
               </div>
 
               {/* Music Info & Player */}
-              <div className="flex flex-1 flex-col justify-center lg:order-2">
+              <div className="flex max-w-[700px] flex-1 flex-col items-center justify-center lg:order-2 lg:items-start">
                 {/* Title Text */}
-                <div className="mb-4 flex flex-col gap-2 sm:mb-6">
-                  <h2 className="text-center text-2xl font-bold text-white sm:text-3xl lg:text-left">
-                    {block.music.albumName || "Untitled Album"}
-                  </h2>
-                  <div className="flex items-center justify-center gap-2 lg:justify-start">
-                    <h3 className="text-primary text-xl italic sm:text-2xl lg:text-2xl">
+                <div className="mb-4 flex w-full flex-col gap-2 sm:mb-6">
+                  <div className="flex flex-col items-center sm:flex-row sm:items-center sm:items-start sm:justify-between">
+                    <h2 className="text-center text-2xl font-bold text-white sm:text-left sm:text-3xl">
+                      {block.music.albumName || "Untitled Album"}
+                    </h2>
+                    <h3 className="text-primary mt-1 text-center text-xl italic sm:mt-0 sm:text-left sm:text-2xl">
                       OUT NOW!
                     </h3>
                   </div>
