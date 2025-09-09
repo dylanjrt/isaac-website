@@ -31,11 +31,12 @@ export const allCollaborationsQuery = groq`
 `;
 
 export const allContactItemsQuery = groq`
-  *[_type == "contactItem"]{
+  *[_type == "contactItem"] | order(order asc){
     _id,
     name,
     link,
-    displayedAs
+    displayedAs,
+    order
   }
 `;
 

@@ -22,6 +22,7 @@ export type ContactItem = {
   name?: string;
   link?: string;
   displayedAs?: string;
+  order: number; // Order in which this contact item should be displayed (lower numbers appear first)
 };
 
 export type ContactPage = {
